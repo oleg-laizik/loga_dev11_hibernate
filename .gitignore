@@ -1,0 +1,18 @@
+.gradle
+build/
+gradlew
+gradlew.bat
+settings.gradle
+wrapper/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### IntelliJ IDEA ###
+.idea
+
+### Mac OS ###
+.DS_Store
+
+### Docker ###
+docker
