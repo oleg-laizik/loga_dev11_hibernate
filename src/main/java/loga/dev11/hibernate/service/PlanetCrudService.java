@@ -23,14 +23,14 @@ public class PlanetCrudService {
         }
     }
 
-    public String getPlanetById(String id) {
+    public Planet getPlanetById(String id) {
         Planet planet;
         try (Session session = getSession()
         ) {
             planet = session.get(Planet.class, id);
         }
-        return Optional.ofNullable(planet).map(l -> planet.getName())
-                .orElse("Planet with such ID doesn't exist");
+        return Optional.ofNullable(planet)
+                .orElseThrow(() -> new NoSuchElementException("Planet with such ID doesn't exist"));
     }
 
     public void updatePlanetById(String id, String name) {

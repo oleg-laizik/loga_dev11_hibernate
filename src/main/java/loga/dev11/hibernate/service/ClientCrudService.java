@@ -24,14 +24,14 @@ public class ClientCrudService {
         }
     }
 
-    public String getClientById(long id) {
+    public Client getClientById(long id) {
         Client client;
         try (Session session = getSession()
         ) {
             client = session.get(Client.class, id);
         }
-        return Optional.ofNullable(client).map(l -> client.getName())
-                .orElse("Client with such ID doesn't exist");
+        return Optional.ofNullable(client)
+                .orElseThrow( () -> new NoSuchElementException("Client with such ID doesn't exist"));
     }
 
     public void updateClientById(long id, String name) {
