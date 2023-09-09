@@ -18,4 +18,4 @@ CREATE TABLE ticket
     client_id INT REFERENCES client(client_id) ON DELETE CASCADE,
     from_planet_id VARCHAR REFERENCES planet(planet_id) ON DELETE CASCADE,
     to_planet_id VARCHAR REFERENCES planet(planet_id) ON DELETE CASCADE
-)
+);
