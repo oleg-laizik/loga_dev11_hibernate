@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Data
 @Entity
 @Table(name = "client")
@@ -20,6 +22,9 @@ public class Client {
     private Long id;
     @Column(name = "name", length = 200)
     private String name;
+
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Ticket> tickets;
 
     public Client(String name) {
         this.name = name;
