@@ -12,7 +12,7 @@ VALUES ('John'),
        ('Emma');
 
 
-INSERT INTO planet (planet_id, name)
+INSERT INTO planet (id, name)
 VALUES ('MARS', 'Mars'),
        ('ERTH', 'Earth'),
        ('SAT2', 'Saturn'),

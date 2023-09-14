@@ -39,7 +39,7 @@ public class LauncherMain {
 
         // Отримання планети за кодом та оновлення назви планети
         System.out.println(planetService.getPlanetById("JUP7"));
-        planetService.updatePlanetById("MARS", "New Mars");
+        planetService.updatePlanetById("MARS", "Mars");
         planetService.deletePlanetById("MARS");
         planetService.getAllPlanet().forEach(System.out::println);
 

@@ -9,20 +9,16 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class MigrationUtil {
-
-    public  void migration() {
-        try (FileReader proper = new FileReader("hibernate.properties")) {
+    public void migration() {
+        ClassLoader loader = Thread.currentThread().getContextClassLoader();
+        try (InputStream inputStream = loader.getResourceAsStream("hibernate.properties")) {
             Properties properties = new Properties();
-            properties.load(proper);
-
-            String url = properties.getProperty("url");
-            String username = properties.getProperty("username");
+            properties.load(inputStream);
+            String url = properties.getProperty("hibernate.connection.url");
+            String username = properties.getProperty("hibernate.connection.username");
             String password = properties.getProperty("password");
-
-            Flyway flyway = Flyway.configure()
-                    .dataSource(url, username, password)
-                    .load();
-
+            Flyway flyway = Flyway.configure().dataSource(url, username, password)
+                    .locations("migration").load();
             flyway.migrate();
             System.out.println("Database migration successful!");
         } catch (IOException e) {
