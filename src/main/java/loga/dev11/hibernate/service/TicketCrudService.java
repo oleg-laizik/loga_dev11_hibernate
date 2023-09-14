@@ -7,6 +7,7 @@ import loga.dev11.hibernate.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -16,6 +17,7 @@ public class TicketCrudService {
     public void createTicket(Client client, Planet fromPlanet, Planet toPlanet) {
         Ticket ticket = new Ticket();
         ticket.setClient(client);
+        ticket.setCreatedAt(LocalDateTime.now());
         ticket.setFromPlanet(fromPlanet);
         ticket.setToPlanet(toPlanet);
         try (Session session = getSession()) {
